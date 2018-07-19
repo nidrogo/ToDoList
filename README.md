@@ -74,6 +74,7 @@ public class NickolasProcessing extends PApplet {
 			text(tasks[i], 90, Offset);
 			Offset += 10;
 			fill(50,50,50);
+			
 			text(+i+".", 70, Offset + 0);
 		}
 		
@@ -85,7 +86,7 @@ public class NickolasProcessing extends PApplet {
 	//textSize(50);
 	boolean insideBox = false;
 	public void mousePressed() {
-		rectOffset =30;
+		rectOffset =180;
 		for(int i = 0; i<newTask; i++) {
 			if(mouseX> 10&& mouseX<30&& mouseY >rectOffset&& mouseY<rectOffset+20) {
 				if(boxes[i].checked == false)
