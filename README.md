@@ -32,7 +32,7 @@ public class NickolasProcessing extends PApplet {
 	}
 	
 	public void setup() {
-		background(100,100,100);
+		background(31, 190, 225);
 		for(int i= 0; i<tasks.length; i++) {
 			tasks[i] = "";
 		}
@@ -41,19 +41,18 @@ public class NickolasProcessing extends PApplet {
 	public void draw() {
 		
 		if(start == true) {
-		text("Welcome to Your Checklist!  Stay on top of tasks and never lose track of your Objectives! Type your name and press Enter!", 50, 50);
+		text("Welcome to ForYouList!  Stay on top of tasks and never lose track of your Objectives! Type your name and press Enter!", 50, 50);
 		text(typing, 50, 70);
+		fill(255,225,0);
+		
 		}
 		if(start == false) {
-		if (key == '\n')
-			text("Welcome "+typing, 50, 120);
+			
 		
-		if (key == '\n')
-			text("Write your Task, then Press ENTER to move onto your next task", 50, 170);
 		
 		Offset = 180;
 		
-		rectOffset =180;
+		rectOffset =170;
 		for(int i =0; i<= newTask;i++) {
 			if(boxes[i] == null) {
 				break;
@@ -63,22 +62,30 @@ public class NickolasProcessing extends PApplet {
 			}
 			
 				else {
+					
 			fill(255,0,0);}
-			rect(10,rectOffset,20,20);
+			rectMode(CORNER);
+			rect(40,rectOffset,15,15);
 			rectOffset+=20;
 		}
 		//mess with Offset
 		
 		textSize(15);
-		for(int i=0; i<tasks.length; i++) {
-			text(tasks[i], 90, Offset);
-			Offset += 10;
-			fill(50,50,50);
+		for(int i=1; i<tasks.length; i++) {
+			text(tasks[i], 90, Offset-1);
 			
-			text(+i+".", 70, Offset + 0);
+			fill(0,0,0);
+			
+			text(+i+".", 70, Offset);
+			Offset += 20;
 		}
 		
-	
+		if (key == '\n')
+			text("Welcome "+typing, 50, 120);
+			fill(255,255,255);
+		
+		if (key == '\n')
+			text("Write your Task, then Press ENTER to move onto your next task", 50, 160);
 		}
 		
 	}
@@ -86,17 +93,21 @@ public class NickolasProcessing extends PApplet {
 	//textSize(50);
 	boolean insideBox = false;
 	public void mousePressed() {
-		rectOffset =180;
+		rectOffset =170;
 		for(int i = 0; i<newTask; i++) {
-			if(mouseX> 10&& mouseX<30&& mouseY >rectOffset&& mouseY<rectOffset+20) {
+			if(mouseX> 40&& mouseX<50&& mouseY >rectOffset&& mouseY<rectOffset+20) {
 				if(boxes[i].checked == false)
 						boxes[i].checked = true;
 				else if(boxes[i].checked == true) {
 					boxes[i].checked = false;
 				}
-				println("it works!");
-			}
+				
+				println("it works!");	
+			}rectOffset+=20;
+			println("mouseX:"+mouseX+"mouseY:"+mouseY);
+			println(i+" rectOffset:"+rectOffset+"rectOffset+20: "+(rectOffset+20));
 		}
+		
 	}
 	PImage[]checkbox = new PImage [1000];
 	public void keyPressed() {
@@ -115,7 +126,7 @@ public class NickolasProcessing extends PApplet {
 			tasks[newTask]="";
 			for(int i = 0 ; i<temp.length-2; i++) {
 			clear();
-			background(100,100,100);
+			background(31, 190, 214);
 			tasks[newTask]+=""+ temp[i];
 			}
 			
